@@ -1,38 +1,40 @@
-.App {
-  text-align: center;
+.dishName{
+    color:rgb(0, 0, 0);
+    font-size: large;
+    font-weight: bold;
+}
+.navbar-dark{
+    background-color: rgb(69, 4, 107);
+}
+.footer{
+    background: rgba(95, 236, 212, 0.315);
+    margin:0px auto;
+    padding: 20px 0px 20px 0px;
+}
+address{
+    font-style: italic;
+    font-size: 80%;
+    color: rgba(0, 0, 0, 0.705);
+}
+.row-header{
+    margin:0px auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.row-content{
+    margin: 0px auto;
+    padding: 50px 0px;
+    border-bottom: 1px ridge ;
+    }
+.jumbotron{
+    margin: 0px auto;
+    padding: 60px 20px;
+    background: rgba(107, 15, 194, 0.753);
+    color: floralwhite;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar-text{
+    cursor: pointer;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.btn-primary{
+    border-radius: 10px;
+    border-style: solid;
 }
