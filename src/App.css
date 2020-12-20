@@ -35,6 +35,12 @@ address{
     cursor: pointer;
 }
 .btn-primary{
-    border-radius: 10px;
+    border-radius: 5px;
     border-style: solid;
+}
+
+.secondary{
+    border: solid 2px rgb(92, 92, 92);
+    color: rgb(92, 92, 92);
+    font-weight: bold;
 }
