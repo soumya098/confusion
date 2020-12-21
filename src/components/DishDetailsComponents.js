@@ -17,7 +17,7 @@ function RenderDish({ dish }) {
         </Card>
     )
 }
-function RenderComments({ comments }) {
+function RenderComments({ comments,addComment, dishId }) {
     if (comments != null) {
         let CommDetail = comments.map((comment) => {
             return (
@@ -33,7 +33,7 @@ function RenderComments({ comments }) {
                 {CommDetail}
                 <div>
                     <br />
-                    <CommentForm></CommentForm>
+                    <CommentForm dishId={dishId} addComment={addComment}></CommentForm>
                 </div>
             </div>
         );
@@ -66,7 +66,7 @@ export default function DishDetails(props) {
                 <div className="col-12 col-md-5 m-1">
                     <h4>COMMENTS</h4>
                     <div>
-                        <RenderComments comments={props.comments}></RenderComments>
+                        <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id}></RenderComments>
                     </div>
                 </div>
 
@@ -100,8 +100,9 @@ export class CommentForm extends Component {
     }
     handleSubmit(values) {
         this.toggleModal();
-        console.log('Current State is: ' + JSON.stringify(values));
-        alert('Current State is: ' + JSON.stringify(values));
+        // console.log('Current State is: ' + JSON.stringify(values));
+        // alert('Current State is: ' + JSON.stringify(values));
+        this.props.addComment(this.props.dishId, values.rating, values.yourname, values.comment);
         // event.preventDefault();
     }
 
@@ -114,7 +115,7 @@ export class CommentForm extends Component {
                     <ModalBody>
                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
-                                <Label htmlFor="yourname">Your Name</Label>
+                                <Label htmlFor="yourname" md={12}>Your Name</Label>
                                 <Col md={12}>
                                     <Control.text model=".yourname" name="yourname" className="form-control"
                                         validators={{
