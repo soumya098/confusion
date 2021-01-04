@@ -4,7 +4,7 @@ import {
     Form, FormGroup, Input, Label, Row, Col
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, LocalForm, Errors, actions} from 'react-redux-form';
+import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/BaseURL';
 
@@ -12,7 +12,7 @@ import { baseUrl } from '../shared/BaseURL';
 function RenderDish({ dish }) {
     return (
         <Card>
-            <CardImg top src={baseUrl+dish.image} alt={dish.name} />
+            <CardImg top src={baseUrl + dish.image} alt={dish.name} />
             <CardBody>
                 <CardTitle>{dish.name}</CardTitle>
                 <CardText>{dish.description}</CardText>
@@ -101,7 +101,7 @@ export default function DishDetails(props) {
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
- 
+
 export class CommentForm extends Component {
 
     constructor(props) {
