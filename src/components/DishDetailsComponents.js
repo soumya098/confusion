@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 import {
     Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Modal, ModalHeader, ModalBody,
-    Form, FormGroup, Input, Label, Row, Col} from 'reactstrap';
+    Form, FormGroup, Input, Label, Row, Col
+} from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Control, LocalForm, Errors, actions} from 'react-redux-form';
+import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/BaseURL';
 
 
 function RenderDish({ dish }) {
     return (
         <Card>
-            <CardImg top src={dish.image} alt={dish.name} />
+            <CardImg top src={baseUrl+dish.image} alt={dish.name} />
             <CardBody>
                 <CardTitle>{dish.name}</CardTitle>
                 <CardText>{dish.description}</CardText>
@@ -17,7 +20,7 @@ function RenderDish({ dish }) {
         </Card>
     )
 }
-function RenderComments({ comments,addComment, dishId }) {
+function RenderComments({ comments, addComment, dishId }) {
     if (comments != null) {
         let CommDetail = comments.map((comment) => {
             return (
@@ -46,39 +49,59 @@ function RenderComments({ comments,addComment, dishId }) {
 }
 
 export default function DishDetails(props) {
-
-    return (
-        <div className="container mt-1">
-            <div className="row">
-                <Breadcrumb>
-                    <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
-                    <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
-                </Breadcrumb>
-                <div className="col-12">
-                    <h3>{props.dish.name}</h3>
-                    <hr />
+    if (props.isLoading) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <Loading />
                 </div>
             </div>
-            <div className="row row-content justify-content-center">
-                <div className="col-12 col-md-4 m-1">
-                    <RenderDish dish={props.dish} />
+        );
+    }
+    else if (props.errMess) {
+        return (
+            <div className="container">
+                <div className="row">
+                    <h4>{props.errMess}</h4>
                 </div>
-                <div className="col-12 col-md-5 m-1">
-                    <h4>COMMENTS</h4>
-                    <div>
-                        <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id}></RenderComments>
+            </div>
+        );
+    }
+    else if (props.dish != null) {
+        return (
+            <div className="container mt-1">
+                <div className="row">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>{props.dish.name}</h3>
+                        <hr />
                     </div>
                 </div>
+                <div className="row row-content justify-content-center">
+                    <div className="col-12 col-md-4 m-1">
+                        <RenderDish dish={props.dish} />
+                    </div>
+                    <div className="col-12 col-md-5 m-1">
+                        <h4>COMMENTS</h4>
+                        <div>
+                            <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id}></RenderComments>
+                        </div>
+                    </div>
 
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 
 }
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
+ 
 export class CommentForm extends Component {
 
     constructor(props) {

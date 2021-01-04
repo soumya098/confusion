@@ -44,3 +44,6 @@ address{
     color: rgb(92, 92, 92);
     font-weight: bold;
 }
+.bg-mybg{
+    background: rgb(81, 2, 138);
+}
