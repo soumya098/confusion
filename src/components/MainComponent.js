@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 import DishDetail from './DishDetailsComponents';
-import { postComment, fetchDishes, fetchComments, fetchPromos, fetchLeaders } from '../redux/ActionCreators';
+import { postComment, fetchDishes, fetchComments, fetchPromos, fetchLeaders, postFeedBack, } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -17,13 +17,14 @@ const mapStateToProps = (state) => {
         dishes: state.dishes,
         comments: state.comments,
         promotions: state.promotions,
-        leaders: state.leaders
+        leaders: state.leaders,
     }
 }
 
 const mapDispatchToProps = (dispatch) => ({
 
     postComment: (dishId, rating, author, comment) => dispatch(postComment(dishId, rating, author, comment)),
+    postFeedBack: (fname, lname, telnum, email, agree, contType, msg) => dispatch(postFeedBack(fname, lname, telnum, email, agree, contType, msg)),
     fetchDishes: () => { dispatch(fetchDishes()) },
     resetFeedbackForm: () => { dispatch(actions.reset('feedback')) },
     fetchComments: () => dispatch(fetchComments()),
@@ -89,7 +90,8 @@ class MainComponent extends Component {
                     <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
                         <Switch>
                             <Route path='/home' component={HomePage} />
-                            <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />} />
+                            <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm}
+                                postFeedBack={this.props.postFeedBack} />} />
                             <Route exact path='/aboutus' component={AboutPage} />
                             <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
                             <Route path='/menu/:dishId' component={DishWithId} />

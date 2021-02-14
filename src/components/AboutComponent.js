@@ -3,6 +3,7 @@ import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'r
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/BaseURL';
 import { Loading } from './LoadingComponent';
+import { Fade, Stagger } from 'react-animation-components'
 
 function Renderleader({ leaders, isLoading, errMess }) {
     if (isLoading) {
@@ -25,25 +26,30 @@ function Renderleader({ leaders, isLoading, errMess }) {
     }
     const lead = leaders.map((leader) => {
         return (
-            <Media tag="li" className="m-4" key={leader.id}>
-                <Media left top href="#" className="mr-2">
-                    <Media object src={baseUrl + leader.image} alt={leader.name} />
-                </Media>
-
-                <Media body className="ml-4">
-                    <Media heading>
-                        {leader.name}
+            <Fade in>
+                <Media tag="li" className="m-4" key={leader.id}>
+                    <Media left top href="#" className="mr-2">
+                        <Media object src={baseUrl + leader.image} alt={leader.name} />
                     </Media>
-                    <p>{leader.designation}</p>
-                    {leader.description}
+
+                    <Media body className="ml-4">
+                        <Media heading>
+                            {leader.name}
+                        </Media>
+                        <p>{leader.designation}</p>
+                        {leader.description}
+                    </Media>
                 </Media>
-            </Media>
+            </Fade>
         );
     });
 
     return (
         <Media list>
-            {lead}
+            <Stagger in>
+                {lead}
+            </Stagger>
+
         </Media>
     )
 

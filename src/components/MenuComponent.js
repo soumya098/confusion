@@ -3,17 +3,20 @@ import { Card, CardImg, CardImgOverlay, CardTitle, Breadcrumb, BreadcrumbItem } 
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/BaseURL';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 function RenderMenuItem({ dish }) {
     return (
-        <Card>
-            <Link to={`/menu/${dish.id}`} >
-                <CardImg width="100%" src={baseUrl +dish.image} alt={dish.name} />
-                <CardImgOverlay>
-                    <CardTitle className="dishName">{dish.name}</CardTitle>
-                </CardImgOverlay>
-            </Link>
-        </Card>
+        <FadeTransform in trasformProps={{ exitTransform: 'scale(0.5) translateY(-50%)' }}>
+            <Card>
+                <Link to={`/menu/${dish.id}`} >
+                    <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
+                    <CardImgOverlay>
+                        <CardTitle className="dishName">{dish.name}</CardTitle>
+                    </CardImgOverlay>
+                </Link>
+            </Card>
+        </FadeTransform>
     );
 }
 
@@ -60,6 +63,7 @@ const Menu = (props) => {
                 </div>
                 <div className="row row-content justify-content-center">
                     {menu}
+
                 </div>
             </div>
         );

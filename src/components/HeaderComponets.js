@@ -4,6 +4,7 @@ import {
     Form, FormGroup, Input, Label
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
+import { baseUrl } from '../shared/BaseURL';
 
 class HeaderComponets extends Component {
     constructor(props) {
@@ -43,7 +44,7 @@ class HeaderComponets extends Component {
                 <Navbar dark expand="md" className="fixed-top">
                     <div className="container-fluid">
                         <NavbarToggler onClick={() => this.toggleNav()} />
-                        <NavbarBrand className="mr-auto ml-1" href="/"><img src='assets/images/logo.png' height="30" width="41" alt='Ristorante Con Fusion' /></NavbarBrand>
+                        <NavbarBrand className="mr-auto ml-1" href="/"><img src={baseUrl+"images/logo.png"} height="30" width="41" alt='Ristorante Con Fusion' /></NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
                             <Nav navbar className="mr-auto">
                                 <NavItem>
