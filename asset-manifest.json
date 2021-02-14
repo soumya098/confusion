@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/confusion/static/css/main.26c23897.chunk.css",
+    "main.js": "/confusion/static/js/main.d68fbc27.chunk.js",
+    "main.js.map": "/confusion/static/js/main.d68fbc27.chunk.js.map",
+    "runtime-main.js": "/confusion/static/js/runtime-main.29c20dfb.js",
+    "runtime-main.js.map": "/confusion/static/js/runtime-main.29c20dfb.js.map",
+    "static/css/2.2a86faee.chunk.css": "/confusion/static/css/2.2a86faee.chunk.css",
+    "static/js/2.c6c96c2f.chunk.js": "/confusion/static/js/2.c6c96c2f.chunk.js",
+    "static/js/2.c6c96c2f.chunk.js.map": "/confusion/static/js/2.c6c96c2f.chunk.js.map",
+    "index.html": "/confusion/index.html",
+    "precache-manifest.6326046aec9174e08f3e8a541691b489.js": "/confusion/precache-manifest.6326046aec9174e08f3e8a541691b489.js",
+    "service-worker.js": "/confusion/service-worker.js",
+    "static/css/2.2a86faee.chunk.css.map": "/confusion/static/css/2.2a86faee.chunk.css.map",
+    "static/css/main.26c23897.chunk.css.map": "/confusion/static/css/main.26c23897.chunk.css.map",
+    "static/js/2.c6c96c2f.chunk.js.LICENSE.txt": "/confusion/static/js/2.c6c96c2f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.29c20dfb.js",
+    "static/css/2.2a86faee.chunk.css",
+    "static/js/2.c6c96c2f.chunk.js",
+    "static/css/main.26c23897.chunk.css",
+    "static/js/main.d68fbc27.chunk.js"
+  ]
+}
