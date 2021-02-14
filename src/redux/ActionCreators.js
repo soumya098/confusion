@@ -9,7 +9,7 @@ export const addComment = (comment) => ({
 
 });
 
-//thunk
+//upload comment part
 export const postComment = (dishId, rating, author, comment) => (dispatch) => {
     const newComment = {
         dishId: dishId,
@@ -190,7 +190,7 @@ export const addLeaders = (leaders) => ({
 });
 
 //feedback
-export const postFeedBack = (fname, lname, telnum, email, agree, contType, msg) => (dispatch) => {
+export const postFeedBack = (fname, lname, telnum, email, agree, contType, msg)=>() => {
     const newFeedBack = {
         firstname: fname,
         lastname: lname, telnum: telnum,
@@ -224,13 +224,12 @@ export const postFeedBack = (fname, lname, telnum, email, agree, contType, msg) 
             })
         .then(response => response.json())
         .then(response => {
-            alert(JSON.stringify(response))
+            alert("Thank You for your FeedBack\n"+JSON.stringify(response))
         })
         .catch(error => {
             console.log('post FeedBack', error.message);
             alert('your feedBack could not be posted\nError: ' + error.message);
         })
-
 }
 
 
